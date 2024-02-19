@@ -12,7 +12,7 @@ func readFile() {
 	os.RemoveAll(outFolder)
 	files, err := os.ReadDir(folder)
 	if err != nil {
-		fmt.Println("读取目录文件错误:", err)
+		fmt.Println("读取目录文件错误,请将文件存放在excel文件夹下:", err)
 		return
 	}
 	for _, file := range files {
