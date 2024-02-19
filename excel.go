@@ -38,16 +38,20 @@ func excel(file string) {
 		hang := make(map[string]interface{}, len(row))
 
 		for num, text := range row {
-			if i == 0 {
+			switch i {
+			case 0:
+			case 1:
 				names = append(names, text)
-			} else if i == 1 {
+			case 2:
 				typs = append(typs, text)
-			} else if num < len(names) && num < len(typs) {
-				hang[names[num]] = getData(typs[num], text)
-			} else {
-				fmt.Println("超长未定义的数据:", text)
+			default:
+				if num < len(names) && num < len(typs) {
+					hang[names[num]] = getData(typs[num], text)
+				} else {
+					fmt.Println("存在超长未定义的数据:", file, "第", i, "行", "第", num, "列:", text)
+					os.Exit(1)
+				}
 			}
-
 		}
 
 		if i >= 2 {
