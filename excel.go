@@ -54,7 +54,7 @@ func excel(file string) {
 			}
 		}
 
-		if i >= 2 {
+		if i >= 3 {
 			list = append(list, hang)
 		}
 	}
